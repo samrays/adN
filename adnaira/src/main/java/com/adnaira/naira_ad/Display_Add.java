@@ -93,7 +93,7 @@ public class Display_Add extends AppCompatActivity {
 
 
 
-        mDialog = new Dialog(Display_Add.this);
+        mDialog = new Dialog(getBaseContext());
         TextView txtclose;
         mDialog.setContentView(R.layout.naira_popup);
 
