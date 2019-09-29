@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.Formatter;
 import android.util.Log;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Display_Add extends AppCompatActivity {
+public class Display_Add {
     private ImageView mImageView;
     private ImageView mImageView2;
     private String mId;
@@ -35,9 +36,13 @@ public class Display_Add extends AppCompatActivity {
     private String mTargetUrl;
     private String mDescription;
     private TextView tv;
+    private Context context;
     Dialog mDialog;
 
-    public Display_Add() {
+
+
+    public Display_Add(Context context) {
+        this.context = context;
     }
 
     public void showAds(View v, String token){
@@ -76,7 +81,7 @@ public class Display_Add extends AppCompatActivity {
                         intent.setAction(Intent.ACTION_VIEW);
                         intent.addCategory(Intent.CATEGORY_BROWSABLE);
                         intent.setData(Uri.parse(mTargetUrl));
-                        startActivity(intent);
+                        context.startActivity(intent);
                     }
                 });
                 Log.d("Sample", getIPAddress());
@@ -93,7 +98,7 @@ public class Display_Add extends AppCompatActivity {
 
 
 
-        mDialog = new Dialog(Display_Add.this);
+        mDialog = new Dialog(context);
         TextView txtclose;
         mDialog.setContentView(R.layout.naira_popup);
 
@@ -124,7 +129,7 @@ public class Display_Add extends AppCompatActivity {
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
                 intent.setData(Uri.parse("https://adnaira.ng/"));
-                startActivity(intent);
+                context.startActivity(intent);
             }
         });
 
